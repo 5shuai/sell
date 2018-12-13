@@ -68,6 +68,9 @@ public class BuyerOrderController {
                            @RequestParam("orderId") String orderId){
         //TODO 不安全的改进
         OrderDTO orderDTO = orderService.findOne(orderId);
+        if (!orderDTO.getOrderId().equalsIgnoreCase(orderId)){
+            log.error("");
+        }
         return resultVOUtil.success(orderDTO);
 
     }
