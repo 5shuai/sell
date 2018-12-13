@@ -45,7 +45,7 @@ public class ProductServiceImpl implements com.imooc.service.ProductService {
         for (CartDTO cartDTO : cartDTOList) {
             ProductInfo productInfo = repository.findById(cartDTO.getProductId()).orElse(null);
             if (productInfo == null)
-            throw new SellException(ResultEnum.PRODUCT_NOT_EXIST);
+                throw new SellException(ResultEnum.PRODUCT_NOT_EXIST);
             int result = productInfo.getProductStock() + cartDTO.getProductQuantity();
             productInfo.setProductStock(result);
             repository.save(productInfo);
