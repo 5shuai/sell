@@ -35,9 +35,9 @@ public class OrderMasterRepositoryTest {
         orderMaster.setBuyerAddress("环科路");
         orderMaster.setBuyerName("wuss");
         orderMaster.setBuyerOpenid("4564654");
-        orderMaster.setBuyerPhone("15618919283");
+        orderMaster.setBuyerPhone("15613219283");
         orderMaster.setOrderAmount(new BigDecimal(15.66));
-        orderMaster.setOrderId("1");
+        orderMaster.setOrderId("2");
         OrderMaster result = repository.save(orderMaster);
         Assert.assertNotNull(result);
     }

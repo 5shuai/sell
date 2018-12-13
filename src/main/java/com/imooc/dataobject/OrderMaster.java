@@ -23,6 +23,10 @@ public class OrderMaster {
     private BigDecimal orderAmount;
     private Integer orderStatus = OrderStatusEnum.NEW.getCode();
     private Integer payStatus = PayStatusEnum.WAIT.getCode();
+    /** 创建时间. */
     private Date createTime;
+
+    /** 更新时间. */
     private Date updatedTime;
+
 }

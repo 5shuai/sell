@@ -58,8 +58,11 @@ public class OrderServiceImplTest {
         Assert.assertNotNull(orderDTO);
     }
 
+    @Test
+    @Ignore
     public void findList(){
         PageRequest request = PageRequest.of(0,2);
-        Page<OrderDTO> orderDTOPage = orderService.findList("",request);
+        Page<OrderDTO> orderDTOPage = orderService.findList("110111110",request);
+        Assert.assertEquals(1,orderDTOPage.getTotalElements());
     }
 }

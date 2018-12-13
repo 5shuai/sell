@@ -18,6 +18,5 @@ public class OrderMasterToOrderDTOConverter {
         return orderMasterList.stream()
                 .map(OrderMasterToOrderDTOConverter::convert)
                 .collect(Collectors.toList());
-
     }
 }
