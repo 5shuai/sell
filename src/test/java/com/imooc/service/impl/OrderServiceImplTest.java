@@ -5,6 +5,7 @@ import com.imooc.dto.OrderDTO;
 import com.imooc.repository.OrderMasterRepository;
 import com.sun.org.apache.bcel.internal.generic.NEW;
 import lombok.extern.slf4j.Slf4j;
+import org.aspectj.weaver.ast.Or;
 import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -63,6 +64,14 @@ public class OrderServiceImplTest {
     public void findList(){
         PageRequest request = PageRequest.of(0,2);
         Page<OrderDTO> orderDTOPage = orderService.findList("110111110",request);
+        Assert.assertEquals(1,orderDTOPage.getTotalElements());
+    }
+
+    @Test
+    @Ignore
+    public void list(){
+        PageRequest request = PageRequest.of(0,2);
+        Page<OrderDTO> orderDTOPage = orderService.findList(request);
         Assert.assertEquals(1,orderDTOPage.getTotalElements());
     }
 }

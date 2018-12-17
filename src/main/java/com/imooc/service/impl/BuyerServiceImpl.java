@@ -23,6 +23,10 @@ public class BuyerServiceImpl implements BuyerService {
 
     @Override
     public OrderDTO findOrderOne(String openid, String orderId) {
+        return checkOrderOwner(openid, orderId);
+    }
+
+    private OrderDTO checkOrderOwner(String openid, String orderId) {
         OrderDTO orderDTO = orderService.findOne(orderId);
         if (!orderDTO.getBuyerOpenid().equalsIgnoreCase(openid)){
             log.error("【查询订单】订单的openid不一致，openid={}",orderId);
@@ -32,7 +36,12 @@ public class BuyerServiceImpl implements BuyerService {
     }
 
     @Override
-    public OrderDTO cacelOrder(String openid, String orderId) {
-        return null;
+    public OrderDTO cancelOrder(String openid, String orderId) {
+        OrderDTO orderDTO = checkOrderOwner(openid, orderId);
+        if (orderDTO == null){
+            log.error("【取消订单】查询不到该订单,orderId={}",orderId);
+            throw new SellException(ResultEnum.ORDER_NOT_EXIST);
+        }
+        return orderService.cancel(orderDTO);
     }
 }

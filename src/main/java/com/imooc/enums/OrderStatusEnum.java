@@ -3,7 +3,7 @@ package com.imooc.enums;
 import lombok.Getter;
 
 @Getter
-public enum OrderStatusEnum {
+public enum OrderStatusEnum implements CodeEnum{
 
     NEW(0, "新订单"),
     FINISH(1, "完结"),
@@ -17,5 +17,7 @@ public enum OrderStatusEnum {
         this.code = code;
         this.message = message;
     }
+
+
 
 }
