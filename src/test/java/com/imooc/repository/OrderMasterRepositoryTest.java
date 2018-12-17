@@ -1,6 +1,7 @@
 package com.imooc.repository;
 
 import com.imooc.dataobject.OrderMaster;
+import com.imooc.utils.KeyUtil;
 import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -37,7 +38,7 @@ public class OrderMasterRepositoryTest {
         orderMaster.setBuyerOpenid("4564654");
         orderMaster.setBuyerPhone("15613219283");
         orderMaster.setOrderAmount(new BigDecimal(15.66));
-        orderMaster.setOrderId("2");
+        orderMaster.setOrderId(KeyUtil.genUniqueKey());
         OrderMaster result = repository.save(orderMaster);
         Assert.assertNotNull(result);
     }

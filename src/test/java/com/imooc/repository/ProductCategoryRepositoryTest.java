@@ -33,11 +33,11 @@ public class ProductCategoryRepositoryTest {
     }
 
     @Test
-    @Transactional
+    @Ignore
     public void saveTest() {
         ProductCategory productCategory = new ProductCategory();
-        productCategory.setCategoryName("测试回滚");
-        productCategory.setCategoryType(4);
+        productCategory.setCategoryName("主食");
+        productCategory.setCategoryType(1);
         repository.save(productCategory);
     }
 
