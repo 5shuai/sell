@@ -5,6 +5,12 @@
     <link href="https://cdn.bootcss.com/twitter-bootstrap/3.0.1/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
+
+<div id="wrapper" class="toggled">
+    <#--边栏sidebar-->
+
+    <#--主要内容-->
+</div>
 <div class="container">
     <div class="row clearfix">
         <div class="col-md-12 column">
