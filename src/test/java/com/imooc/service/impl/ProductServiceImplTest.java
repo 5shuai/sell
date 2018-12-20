@@ -58,4 +58,18 @@ public class ProductServiceImplTest {
         productInfo.setCategoryType(1);
         service.save(productInfo);
     }
+
+    @Test
+    @Ignore
+    public void onSale(){
+        ProductInfo productInfo = service.onSale("56431345");
+        Assert.assertEquals(Integer.valueOf(0),productInfo.getProductStatus());
+    }
+
+    @Test
+    @Ignore
+    public void offSale(){
+        ProductInfo productInfo = service.offSale("56431345");
+        Assert.assertEquals(Integer.valueOf(1),productInfo.getProductStatus());
+    }
 }
