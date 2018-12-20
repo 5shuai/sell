@@ -60,10 +60,9 @@ public class OrderServiceImplTest {
     }
 
     @Test
-    @Ignore
     public void findList(){
         PageRequest request = PageRequest.of(0,2);
-        Page<OrderDTO> orderDTOPage = orderService.findList("110111110",request);
+        Page<OrderDTO> orderDTOPage = orderService.findList("fwaekfjawklefjaw",request);
         Assert.assertEquals(1,orderDTOPage.getTotalElements());
     }
 
