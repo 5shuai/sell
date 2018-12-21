@@ -12,7 +12,7 @@
                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
                 <h4>
                     错误!
-                </h4> <strong>${msg}!</strong>  <a href="${url}" class=>点击跳转首页</a>
+                </h4> <strong>${msg!""}</strong><a href="${url}" class=>点击跳转首页</a>
             </div>
         </div>
     </div>

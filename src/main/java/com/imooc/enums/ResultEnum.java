@@ -20,6 +20,7 @@ public enum ResultEnum {
     PRODUCT_STATUS_ERROR(20, "商品状态不正确"),
     PRODUCT_ON_SALE_SUCCESS(21, "商品上架成功"),
     PRODUCT_OFF_SALE_SUCCESS(22, "商品下架成功"),
+    CATEGORY_TYPE_EXIST(23, "商品类型已存在"),
     ORDER_CANCEL_SUCCESS(2, "订单取消成功"),
     ORDER_FINISH_SUCCESS(3, "订单完结成功");
 

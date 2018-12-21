@@ -37,7 +37,7 @@
                                 ${category.createTime}
                             </td>
                             <td>
-                                ${category.updatedTime}
+                                ${(category.updatedTime)!""}
                             </td>
 
                             <td><a href="/sell/seller/category/index?categoryId=${category.categoryId}">修改</td>

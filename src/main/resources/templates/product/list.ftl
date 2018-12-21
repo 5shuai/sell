@@ -13,7 +13,7 @@
                     <table class="table table-bordered table-condensed">
                         <thead>
                         <tr>
-                            <th>订单id</th>
+                            <th>商品id</th>
                             <th>名称</th>
                             <th>图片</th>
                             <th>单价</th>
