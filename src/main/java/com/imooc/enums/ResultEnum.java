@@ -21,6 +21,9 @@ public enum ResultEnum {
     PRODUCT_ON_SALE_SUCCESS(21, "商品上架成功"),
     PRODUCT_OFF_SALE_SUCCESS(22, "商品下架成功"),
     CATEGORY_TYPE_EXIST(23, "商品类型已存在"),
+    USER_EXIST(24, "用户已存在"),
+    USER_NOT_EXIST(25, "用户不存在"),
+    USER_PASSWORD_INCORRECT(26, "密码错误"),
     ORDER_CANCEL_SUCCESS(2, "订单取消成功"),
     ORDER_FINISH_SUCCESS(3, "订单完结成功");
 

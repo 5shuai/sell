@@ -1,7 +1,0 @@
-Starting SellApplicationTests on PC1167 with PID 18444 (started by wuss in G:\sell)
-No active profile set, falling back to default profiles: default
-Initializing ExecutorService 'applicationTaskExecutor'
-Started SellApplicationTests in 1.72 seconds (JVM running for 2.324)
-name:imooc,password:12345
-info...
-Shutting down ExecutorService 'applicationTaskExecutor'

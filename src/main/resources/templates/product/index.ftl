@@ -1,7 +1,6 @@
 <html xmlns="http://www.w3.org/1999/html">
 <#include "../common/header.ftl">
 <body>
-
 <div id="wrapper" class="toggled">
 <#--边栏sidebar-->
     <#include "../common/nav.ftl">
