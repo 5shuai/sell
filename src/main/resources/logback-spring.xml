@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <configuration>
+    <property name="LOG_HOME" value="${log.dir:-logs}/sell" />
     <appender name="consoleLog" class="ch.qos.logback.core.ConsoleAppender">
         <layout class="ch.qos.logback.classic.PatternLayout">
             <pattern>
@@ -22,7 +23,7 @@
         <!--滚动策略-->
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <!--路径-->
-            <fileNamePattern>G:\sell\src\main\resources\LogFiles/sell/sell-%d-info.log</fileNamePattern>
+            <fileNamePattern>${LOG_HOME}/sell-%d-info.log</fileNamePattern>
         </rollingPolicy>
     </appender>
 <!--Error日志-->
@@ -38,7 +39,7 @@
         <!--滚动策略-->
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <!--路径-->
-            <fileNamePattern>G:\sell\src\main\resources\LogFiles/sell/sell-%d-error.log</fileNamePattern>
+            <fileNamePattern>${LOG_HOME}/sell-%d-error.log</fileNamePattern>
         </rollingPolicy>
     </appender>
 
