@@ -14,9 +14,9 @@ import com.imooc.repository.OrderDetailRepository;
 import com.imooc.repository.OrderMasterRepository;
 import com.imooc.service.OrderService;
 import com.imooc.service.ProductService;
+import com.imooc.service.WebSocket;
 import com.imooc.utils.KeyUtil;
 import lombok.extern.slf4j.Slf4j;
-import org.hibernate.criterion.Order;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -47,6 +47,8 @@ public class OrderServiceImpl implements OrderService {
     @Autowired
     private OrderMasterRepository orderMasterRepository;
 
+    @Autowired
+    private WebSocket webSocket;
     @Override
     @Transactional
     public OrderDTO create(OrderDTO orderDTO) {
@@ -80,6 +82,8 @@ public class OrderServiceImpl implements OrderService {
                 .map(e -> new CartDTO(e.getProductId(), e.getProductQuantity()))
                 .collect(Collectors.toList());
         productService.decreaseStock(cartDTOList);
+        // 5. 发送webSocket消息
+        webSocket.sendMessage("你有新的订单");
         return orderDTO;
     }
 
@@ -100,8 +104,8 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public Page<OrderDTO> findList(String buyerOpenid, Pageable pageable) {
-        Page<OrderMaster> orderMasters = orderMasterRepository.findByBuyerOpenid(buyerOpenid, pageable);
+    public Page<OrderDTO> findList(String buyerId, Pageable pageable) {
+        Page<OrderMaster> orderMasters = orderMasterRepository.findByBuyerId(buyerId, pageable);
         List<OrderDTO> orderDTOList = OrderMasterToOrderDTOConverter.convert(orderMasters.getContent());
         return new PageImpl<>(orderDTOList, pageable, orderMasters.getTotalElements());
     }
@@ -135,9 +139,6 @@ public class OrderServiceImpl implements OrderService {
                 .collect(Collectors.toList());
         productService.increaseStock(cartDTOList);
         //如果已支付需要退款
-        if (orderDTO.getPayStatus().equals(PayStatusEnum.SUCCESS.getCode())) {
-            //TODO
-        }
         return orderDTO;
     }
 
@@ -172,7 +173,7 @@ public class OrderServiceImpl implements OrderService {
             throw new SellException(ResultEnum.ORDER_PAY_STATUS_ERROR);
         }
         OrderMaster orderMaster = new OrderMaster();
-        orderDTO.setPayStatus(PayStatusEnum.WAIT.getCode());
+        orderDTO.setPayStatus(PayStatusEnum.SUCCESS.getCode());
         BeanUtils.copyProperties(orderDTO, orderMaster);
         OrderMaster result = orderMasterRepository.save(orderMaster);
 
@@ -181,6 +182,7 @@ public class OrderServiceImpl implements OrderService {
             log.error("【订单支付状态错误】,orderMaster={}", orderMaster);
             throw new SellException(ResultEnum.ORDER_UPDATE_FAIL);
         }
+        webSocket.sendMessage(String.format("订单ID=%s已支付完成，请尽快处理！",orderDTO.getOrderId()));
         return orderDTO;
     }
 

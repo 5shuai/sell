@@ -2,10 +2,7 @@ package com.imooc.service.impl;
 
 import com.imooc.dataobject.OrderDetail;
 import com.imooc.dto.OrderDTO;
-import com.imooc.repository.OrderMasterRepository;
-import com.sun.org.apache.bcel.internal.generic.NEW;
 import lombok.extern.slf4j.Slf4j;
-import org.aspectj.weaver.ast.Or;
 import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -37,7 +34,7 @@ public class OrderServiceImplTest {
         orderDTO.setBuyerAddress("测试卖家地址");
         orderDTO.setBuyerName("测试姓名");
         orderDTO.setBuyerPhone("13655555555");
-        orderDTO.setBuyerOpenid(BUYER_OPENID);
+        orderDTO.setBuyerId(BUYER_OPENID);
         OrderDetail orderDetail = new OrderDetail();
         orderDetail.setProductId("56431346");
         orderDetail.setProductQuantity(2);

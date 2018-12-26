@@ -23,9 +23,9 @@ public class OrderMasterRepositoryTest {
 
     @Test
     @Ignore
-    public void findByBuyerOpenid() {
+    public void findByBuyerId() {
         PageRequest request = PageRequest.of(0,2);
-        Page<OrderMaster> masterPages = repository.findByBuyerOpenid("2233",request);
+        Page<OrderMaster> masterPages = repository.findByBuyerId("2233",request);
         System.out.println(masterPages);
     }
 
@@ -35,7 +35,7 @@ public class OrderMasterRepositoryTest {
         OrderMaster orderMaster = new OrderMaster();
         orderMaster.setBuyerAddress("环科路");
         orderMaster.setBuyerName("wuss");
-        orderMaster.setBuyerOpenid("4564654");
+        orderMaster.setBuyerId("2fda0aeb-da73-4ef4-b4ef-3b20e98a2203");
         orderMaster.setBuyerPhone("15613219283");
         orderMaster.setOrderAmount(new BigDecimal(15.66));
         orderMaster.setOrderId(KeyUtil.genUniqueKey());

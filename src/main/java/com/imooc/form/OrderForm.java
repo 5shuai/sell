@@ -1,8 +1,10 @@
 package com.imooc.form;
 
+import com.imooc.dto.ProductInfoDTO;
 import lombok.Data;
 
 import javax.validation.constraints.NotEmpty;
+import java.util.List;
 
 @Data
 public class OrderForm {
@@ -22,14 +24,13 @@ public class OrderForm {
     @NotEmpty(message = "地址必填")
     private String address;
     /**
-     * 买家openid
+     * 买家userId
      */
-    @NotEmpty(message = "openid必填")
-    private String openid;
+    @NotEmpty(message = "userId必填")
+    private String userId;
     /**
      * 买家购物车
      */
     @NotEmpty(message = "购物车不能为空")
-    private String items;
-
+    private List<ProductInfoDTO> items;
 }

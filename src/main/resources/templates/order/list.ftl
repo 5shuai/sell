@@ -1,11 +1,10 @@
 <html>
 <#include "../common/header.ftl">
 <body>
-
 <div id="wrapper" class="toggled">
-    <#--边栏sidebar-->
+<#--边栏sidebar-->
     <#include "../common/nav.ftl">
-    <#--主要内容-->
+<#--主要内容-->
     <div id="page-content-wrapper">
         <div class="container-fluid">
             <div class="row clearfix">
@@ -58,13 +57,13 @@
                                 <#else>
 
                                 </#if>
-                                </td>
+                            </td>
                         </tr>
                         </#list>
                         </tbody>
                     </table>
                 </div>
-                <#--分页-->
+            <#--分页-->
                 <div class="col-md-12 column">
                     <ul class="pagination pull-right">
                         <#if currentPage lte 1>
@@ -82,7 +81,7 @@
                         <#if currentPage gte orderDTOPage.getTotalPages()>
                             <li class="disabled"><a href="#">下一页</a></li>
                         <#else>
-                            <li><a href="#">下一页</a></li>
+                            <li><a href="/sell/seller/order/list?page=${currentPage+1}&size=${size}">下一页</a></li>
                         </#if>
                     </ul>
                 </div>
@@ -90,5 +89,61 @@
         </div>
     </div>
 </div>
+
+
+// 弹窗
+<div class="modal fade" id="myModal" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title" id="myModalLabel">
+                    提醒
+                </h4>
+            </div>
+            <div class="modal-body">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <button onclick="location.reload()" type="button" class="btn btn-primary">查看订单</button>
+            </div>
+        </div>
+    </div>
+</div>
+<#--播放音乐-->
+<audio id="notice" loop="loop">
+    <source src="/sell/mp3/song.mp3" type="audio/mpeg">
+</audio>
+<script>
+    var websokect = null;
+    if ('WebSocket' in window) {
+        websokect = new WebSocket("ws://localhost/sell/webSocket")
+    } else {
+        alert("该浏览器不支持websocket");
+    }
+
+    websokect.onopen = function (event) {
+        console.log("建立连接")
+    };
+
+    websokect.onclose = function (event) {
+        console.log("链接关闭")
+    };
+
+    websokect.onmessage = function (event) {
+        console.log("收到消息：" + event.data);
+        document.getElementsByClassName("modal-body")[0].innerHTML=event.data;
+        $('#myModal').modal('show');
+    };
+
+    window.onerror = function () {
+        alert("websocket通信发生错误")
+    };
+
+    window.onbeforeunload = function () {
+        websokect.close()
+    };
+</script>
 </body>
 </html>

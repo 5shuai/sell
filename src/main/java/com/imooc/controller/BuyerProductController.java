@@ -11,7 +11,7 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import com.imooc.utils.resultVOUtil;
+import com.imooc.utils.ResultVOUtil;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -54,7 +54,7 @@ public class BuyerProductController {
             productVOList.add(productVO);
 
         }
-        return resultVOUtil.success(productVOList);
+        return ResultVOUtil.success(productVOList);
     }
 
 

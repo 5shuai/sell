@@ -19,8 +19,7 @@ import javax.validation.constraints.NotEmpty;
 @DynamicUpdate
 public class UserInfo {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private String userId;
     private String username;
     private String password;
 }

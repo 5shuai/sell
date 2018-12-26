@@ -11,6 +11,7 @@ import com.imooc.form.UserRegisterForm;
 import com.imooc.service.UserInfoService;
 import com.imooc.utils.CookieUtil;
 import com.imooc.utils.EncrypDESUtil;
+import com.imooc.utils.KeyUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
@@ -67,6 +68,7 @@ public class UserController {
             }
         }
         UserInfo userInfo = new UserInfo();
+        userInfo.setUserId(UUID.randomUUID().toString());
         userInfo.setUsername(userForm.getRegisterUserName());
         String password = EncrypDESUtil.encode3Des(UserConfig.key, userForm.getRegisterUsePassword());
         userInfo.setPassword(password);
