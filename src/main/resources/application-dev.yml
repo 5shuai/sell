@@ -12,6 +12,7 @@ spring:
   redis:
     host: localhost
     port: 6379
+    password: 1qaz@WSX1qaz
 
 server:
   servlet:
