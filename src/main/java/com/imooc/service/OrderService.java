@@ -6,7 +6,7 @@ import org.springframework.data.domain.Pageable;
 
 public interface OrderService {
     /**
-     * 创建订单,这是用来测试的一句话
+     * 创建订单
       */
     OrderDTO create(OrderDTO orderDTO);
 
