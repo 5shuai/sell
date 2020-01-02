@@ -113,7 +113,7 @@
             </div>
         </div>
     </section>
-    <a href="http://www.miitbeian.gov.cn/" target="_blank">沪ICP备18047321号</a>
+    <a href="http://www.beian.miit.gov.cn/" target="_blank">沪ICP备18047321号</a>
 </div>
 </body>
 </html>
